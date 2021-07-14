@@ -14,10 +14,11 @@ package cal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Cal_main {
+public class Calulator {
 	
 	private static final String INPUT_MESSAGE = "식을 입력 해주세요 : ";
 	private static final String OUTPUT_MESSAGE = "계산 결과 : ";
+	private static final String ERROR_MESSAGE = "잘못된 값을 입력하셨습니다.";
 	private static final String SPERATOR = " ";
 	private static final Scanner scanner = new Scanner(System.in);
 	
@@ -41,8 +42,8 @@ public class Cal_main {
 		String splited[] = split(input); //스플릿해서 저장
 		
 		/*		숫자와 연산자 구분	*/
-		for (int i = 0; i < splited.length; i++) {
-			addData(splited[i]);
+		for (String repeat : splited) {
+			addData(repeat);
 		}
 		
 		/* 			식 계산		*/
@@ -80,26 +81,32 @@ public class Cal_main {
 		}
 	}
 	
-	public static int parseInt(String string) {
+	public static int parseInt(String string) { // 문자열->숫자 간략화 메소드
 		return Integer.parseInt(string);
 	}
 
 	public static void Caculating (String oper, int num) { // 연산자에 따른 계산을 위한 메소드
-		if(oper.equals(PLUS))
+		try{
+			if(oper.equals(PLUS)) // +면 더하기 수행
+		
 			doPlus(num);
-		else if (oper.equals(SUBTRACTION))
+		else if (oper.equals(SUBTRACTION)) // -면 빼기 수행
 			doSubtraction(num);
+		} catch(Exception e) {
+			e.getStackTrace();
+			System.out.println(ERROR_MESSAGE);
+		}
 	}
 	
-	public static void doPlus(int num) {
+	public static void doPlus(int num) { // 더하기 수행하는 메소드
 		RESULT += num;
 	}
 	
-	public static void doSubtraction(int num) {
+	public static void doSubtraction(int num) { // 빼기 수행하는 메소드
 		RESULT -= num;
 	}
 	
-	public static void Output() {
+	public static void Output() { // 결과 출력 메소드
 		System.out.print(OUTPUT_MESSAGE + RESULT);
 	}
 }
