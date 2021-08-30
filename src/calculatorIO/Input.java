@@ -1,4 +1,4 @@
-package input;
+package calculatorIO;
 
 import java.util.Scanner;
 import calculator.Calculator;
