@@ -2,7 +2,6 @@ package input;
 
 import java.util.Scanner;
 import calculator.Calculator;
-
 public class Input {
 	private final String INPUT_MESSAGE = "식을 입력 해주세요 : ";
 	private final Scanner SCANNER = new Scanner(System.in);

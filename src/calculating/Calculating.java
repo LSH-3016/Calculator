@@ -28,7 +28,7 @@ public class Calculating {
 			System.out.println(ERROR_MESSAGE);
 		}
 	}
-
+	
 	private void doPlus(Calculator calculator) {
 		calculator.setResult(calculator.result + calculator.number.poll());
 	}
