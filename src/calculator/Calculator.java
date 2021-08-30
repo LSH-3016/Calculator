@@ -3,8 +3,7 @@ package calculator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import input.Input;
-import output.Output;
+import calculatorIO.*;
 import calculating.Calculating;
 
 public class Calculator {
