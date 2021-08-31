@@ -2,35 +2,33 @@ package calculatorIO;
 
 import java.util.Scanner;
 import calculator.Calculator;
+import calculator.Number;
+import calculator.Operator;
 
 public class Input {
 	private final String INPUT_MESSAGE = "식을 입력 해주세요 : ";
 	private final Scanner SCANNER = new Scanner(System.in);
 	private final String SEPERATOR = " ";
 	
-	public void inputData(Calculator calculator) {
-		System.out.print(INPUT_MESSAGE);
-		String splitedData[] = doSplit(SCANNER.nextLine());
-		for(String repeat : splitedData) { 
-			if (isNumber(repeat) == true) {
-				calculator.number.add(Integer.parseInt(repeat));
+	public Input(Calculator calculator) {
+		String splitedData[] = doSplit(inputData());
+		for(int i = 0; i < splitedData.length; i++) {
+			if (i % 2 == 0) {
+				calculator.setNumber(new Number(splitedData[i]));
 			}
-			if (isNumber(repeat) == false) {
-				calculator.operator.add(repeat);
+			if (i % 2 != 0) {
+				calculator.setOperator(new Operator(splitedData[i]));
 			}
+			
 		}
+	}
+	
+	private String inputData() {
+		System.out.println(INPUT_MESSAGE);
+		return SCANNER.nextLine();
 	}
 	
 	private String[] doSplit(String data) {
 		return data.split(SEPERATOR);
-	}
-	
-	private boolean isNumber(String data) {
-		try{
-			Integer.parseInt(data);
-			return true;
-		} catch(NumberFormatException e) {
-			return false;
-		}
 	}
 }
