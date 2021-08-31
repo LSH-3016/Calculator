@@ -24,7 +24,7 @@ public class Input {
 	}
 	
 	private String inputData() {
-		System.out.println(INPUT_MESSAGE);
+		System.out.print(INPUT_MESSAGE);
 		return SCANNER.nextLine();
 	}
 	
